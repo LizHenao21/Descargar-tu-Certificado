@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta tu Certificado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #mensaje {
+      margin-top: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Consulta tu Certificado</h1>
+  <p>Ingresa tu número de documento:</p>
+  <input type="text" id="documento" placeholder="Ej: 12345678" />
+  <br><br>
+  <button onclick="descargarCertificado()">Descargar</button>
+  <div id="mensaje"></div>
+
+  <script>
+    function descargarCertificado() {
+      const documento = document.getElementById('documento').value.trim();
+      const mensaje = document.getElementById('mensaje');
+
+      if (!documento) {
+        mensaje.textContent = "Por favor ingresa un número de documento.";
+        return;
+      }
+
+      const url = `certificados/${documento}.pdf`;
+
+      fetch(url)
+        .then(response => {
+          if (response.ok) {
+            window.location.href = url;
+            mensaje.textContent = "";
+          } else {
+            mensaje.textContent = "No se encontró un certificado con ese número.";
+          }
+        })
+        .catch(error => {
+          mensaje.textContent = "Hubo un error al buscar el certificado.";
+        });
+    }
+  </script>
+</body>
+</html>
