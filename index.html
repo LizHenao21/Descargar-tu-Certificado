@@ -5,29 +5,67 @@
   <title>Consulta tu Certificado</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 80px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
     }
 
-    input, button {
-      padding: 10px;
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 12px;
       font-size: 16px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388E3C;
     }
 
     #mensaje {
       margin-top: 20px;
-      color: red;
+      color: #d32f2f;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Consulta tu Certificado</h1>
-  <p>Ingresa tu número de documento:</p>
-  <input type="text" id="documento" placeholder="Ej: 12345678" />
-  <br><br>
-  <button onclick="descargarCertificado()">Descargar</button>
-  <div id="mensaje"></div>
+  <div class="container">
+    <h1>Consulta tu Certificado</h1>
+    <p>Ingresa tu número de documento:</p>
+    <input type="text" id="documento" placeholder="Ej: 12345678" />
+    <br>
+    <button onclick="descargarCertificado()">Descargar</button>
+    <div id="mensaje"></div>
+  </div>
 
   <script>
     function descargarCertificado() {
