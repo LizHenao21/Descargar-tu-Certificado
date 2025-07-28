@@ -4,96 +4,65 @@
   <meta charset="UTF-8">
   <title>Consulta tu Certificado</title>
   <style>
-    :root {
-      --color-primario: #007BFF;
-      --color-secundario: #28A745;
-      --color-fondo: #F4F9FF;
-      --color-texto: #333;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      background-color: var(--color-fondo);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--color-texto);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background-color: #f0f8ff;
       margin: 0;
+      padding: 0;
     }
 
-    .contenedor {
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
       background-color: white;
-      padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 90%;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       text-align: center;
     }
 
     h1 {
-      margin-bottom: 10px;
-      color: var(--color-primario);
-    }
-
-    p {
+      color: #003366;
       margin-bottom: 20px;
-      font-size: 16px;
     }
 
-    input {
-      width: 100%;
+    input[type="text"] {
       padding: 12px;
       font-size: 16px;
+      width: 80%;
       border: 1px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 20px;
-      transition: border-color 0.3s;
-    }
-
-    input:focus {
-      border-color: var(--color-primario);
-      outline: none;
     }
 
     button {
-      background-color: var(--color-secundario);
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4CAF50;
       color: white;
       border: none;
-      padding: 12px 20px;
-      font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #218838;
+      background-color: #388E3C;
     }
 
     #mensaje {
       margin-top: 20px;
-      color: red;
+      color: #d32f2f;
       font-weight: bold;
-    }
-
-    @media (max-width: 500px) {
-      .contenedor {
-        padding: 30px 20px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="contenedor">
+  <div class="container">
     <h1>Consulta tu Certificado</h1>
     <p>Ingresa tu número de documento:</p>
     <input type="text" id="documento" placeholder="Ej: 12345678" />
+    <br>
     <button onclick="descargarCertificado()">Descargar</button>
     <div id="mensaje"></div>
   </div>
@@ -119,7 +88,7 @@
             mensaje.textContent = "No se encontró un certificado con ese número.";
           }
         })
-        .catch(() => {
+        .catch(error => {
           mensaje.textContent = "Hubo un error al buscar el certificado.";
         });
     }
